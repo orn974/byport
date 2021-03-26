@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление сотрудников в список предприятия</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="header :: header"></header>
+<div class="container mt-5 mb-5">
+    <h1>Добавление Массива</h1>
+    <form action="/add" method="post">
+        <div th:each="el : ${employee}" class="alert alert-info mt-2">  </div>
+        <input type="text" name="name" placeholder="Введите имя" class="form-control"><br>
+        <input type="text" name="familie" placeholder="Введите фамилию" class="form-control"><br>
+        <textarea name="agee" placeholder="Введите возраст" class="form-control"></textarea><br>
+        <button type="submit" class="btn btn-success">Добавить объекты</button>
+
+    </form>
+</div>
+<div th:insert="footer :: footer"></div>
+</body>
+</html>

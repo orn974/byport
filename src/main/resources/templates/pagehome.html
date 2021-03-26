@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Программа менеджемента на предприятии</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="header :: header"></header>
+<p th:text="'You Go ' + ${title} + '!'"></p>
+<div class="container mt-5">
+    <h1 th:text="${title}"/></h1>
+</div>
+<main>
+    <div class="container mt-5">
+        <p th:text="'Это' + ${title} + ' база персонала'"></p>
+        <ul>
+            <li style="text-align: left;"><strong>Таблица базы данных</strong></li>
+        </ul>
+        <table border="1" style="border-collapse: collapse; width: 100%; height: 54px;">
+            <tbody>
+            <tr style="height: 18px;">
+                <td style="width: 25%; height: 18px;">Имя</td>
+                <td style="width: 25%; height: 18px;">Фамилия</td>
+                <td style="width: 25%; height: 18px;">Год рождения</td>
+            </tr>
+            <div th:each="el : ${employee}" class="alert alert-info mt-2">
+            <tr style="height: 18px;">
+                <td style="width: 25%; height: 18px;"; th:text ="${el.name}"></td>
+                <td style="width: 25%; height: 18px;"; th:text="${el.familie}"></td>
+                <td style="width: 25%; height: 18px;"; th:text="${el.agee}"></td>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+        <p></p>
+    </div>
+</main>
+  <div th:insert="footer :: footer"></div>
+</body>
+</html>
