@@ -33,5 +33,11 @@ public class mainController {
        return "addList";
     }
 
+    @GetMapping("/texts")
+    public String textConvert (Model model){
+        
+       return "tesserAct";
+    }
+
 
 }
