@@ -45,7 +45,7 @@ public class Employee {
         this.agee = agee;
     }
 
-    public Employee() {
+    public Employee(String adam, String gilly, String serg, String s) {
     }
 
     public Employee(String name, String familie, int agee) {

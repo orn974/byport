@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>emploees</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div th:each="el : ${response}" >
+    <tr style="height: 18px;">
+        <td style="width: 25%; height: 18px;"; th:text ="${el.name}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.surname}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.patronymic}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.afterbirth}"></td>
+</div>
+
+<div th:each="el : ${responseRepo}" >
+    <tr style="height: 18px;">
+        <td style="width: 25%; height: 18px;"; th:text ="${el.name}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.surname}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.patronymic}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.afterbirth}"></td>
+</div>
+
+
+</body>
+</html>
