@@ -83,15 +83,15 @@ public class mainController {
         restTemplate.put(ROOT_URL+"/emloees/{id}",updateEmploee,params);
 
         WebClient webClient;
-
-        public Mono<Employee> update(Employee e)
-        {
-            return webClient.put()
-                    .uri("/employees/" + e.getId())
-                    .body(Mono.just(e), Employee.class)
-                    .retrieve()
-                    .bodyToMono(Employee.class);
-        }
+//
+//        public Mono<Employee> update(Employee e)
+//        {
+//            return webClient.put()
+//                    .uri("/employees/" + e.getId())
+//                    .body(Mono.just(e), Employee.class)
+//                    .retrieve()
+//                    .bodyToMono(Employee.class);
+//        }
 
         return "redirect:/";
     }
