@@ -23,7 +23,16 @@
         <td style="width: 25%; height: 18px;"; th:text="${el.patronymic}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.afterbirth}"></td>
 </div>
-
+<div class="container mt-5 mb-5">
+    <h1>Добавление сотрудника</h1>
+    <form action="/resource" method="post">
+        <input type="text" name="name" placeholder="Введите имя" class="form-control"><br>
+        <input type="text" name="surname" placeholder="Введите фамилию" class="form-control"><br>
+        <input type="text" name="patronymic" placeholder="Введите анонс отчество" class="form-control"><br>
+        <input type="text" name="afterbirth" placeholder="Введите дату рождения" class="form-control"><br>
+          <button type="submit" class="btn btn-success">Добавить </button>
+    </form>
+</div>
 
 </body>
 </html>

@@ -4,13 +4,19 @@ import by.mts.brest.java.byport.EmplRepository;
 import by.mts.brest.java.byport.Emploee;
 import by.mts.brest.java.byport.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -75,19 +81,31 @@ public class mainController {
 
         Employee updateEmploee = new Employee( "Adam", "Gilly", "Serg","11.22.33");
         restTemplate.put(ROOT_URL+"/emloees/{id}",updateEmploee,params);
-    return "redirect:/";
+
+        WebClient webClient;
+
+        public Mono<Employee> update(Employee e)
+        {
+            return webClient.put()
+                    .uri("/employees/" + e.getId())
+                    .body(Mono.just(e), Employee.class)
+                    .retrieve()
+                    .bodyToMono(Employee.class);
+        }
+
+        return "redirect:/";
     }
 
-    @PostMapping("/putempl")
-    public String postEmployee(@RequestParam String name,@RequestParam String surname, @RequestParam String patronymic, @RequestParam String afterbirth)
-    {
-        RestTemplate restTemplate = new RestTemplate();
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("ig","1");
-
-        Employee updateEmploee = new Employee( name, surname, patronymic, afterbirth);
-        restTemplate.put(ROOT_URL+"/emloees/{id}",updateEmploee,params);
-    return "PageEmpliees";
-    }
+//    @PostMapping("/putempl")
+//    public String postEmployee(@RequestParam String name,@RequestParam String surname, @RequestParam String patronymic, @RequestParam String afterbirth)
+//    {
+//        RestTemplate restTemplate = new RestTemplate();
+//        Map<String, String> params = new HashMap<String, String>();
+//        params.put("ig","1");
+//
+//        Employee updateEmploee = new Employee( name, surname, patronymic, afterbirth);
+//        restTemplate.put(ROOT_URL+"/emloees/{id}",updateEmploee,params);
+//    return "PageEmpliees";
+//
 
 }
